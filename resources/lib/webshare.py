@@ -80,7 +80,7 @@ class WebshareContentProvider(ContentProvider):
 
     def list(self,url):
         result = []
-        headers,req = self._create_request(url,{'what':'','offset':0,'limit':25,'category':'','sort':'','wst':self.token})
+        headers,req = self._create_request(url,{'what':'','offset':0,'limit':25,'category':'','sort':'largest','wst':self.token})
         data = util.post(self._url('api/search/'),req,headers=headers)
         xml = ET.fromstring(data)
         if not xml.find('status').text == 'OK':
